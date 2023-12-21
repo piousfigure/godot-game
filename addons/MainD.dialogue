@@ -1,0 +1,53 @@
+~ start
+
+
+if (global.met_princess == false):
+	Princess: Hi there!
+	Princess: You must be here because of the request I put out, yeah?
+	Princess: Great! Thank you so much, I appreciate it a lot.
+	Princess: Anyway, I know I was a bit vague when explaining what the job is on the notice.
+	Princess: Basically, I've been having some animal problems for a few months and I was finally able to resolve them about a week ago.
+	Princess: But while they were here, somehow they got into the basement and moved a lot of my stuff around.
+	Princess: Now I can't find anything! It's disastorous!!
+	Princess: What I want you to do is to find things that I'm missing. I have a few of them already up here, but I just feel anxious not having them all, y'know?
+	Princess: First, I'd like you to find all my LETTERS. They look like the ones on the ground next to my desk over there. You can get to the basement by going down the stairs in the corner. 
+	Princess: Once you have all of them, come back to me and I'll tell you the next one.
+	set global.met_princess = true
+	=> END
+	
+if (global.found_all_princess_letters == false) and (global.met_princess == true):
+# if (global.found_princess_letter_1 == false) or (global.found_princess_letter_2 == false) or (global.found_princess_letter_3 == false):
+	Princess: Oh, I think you might be missing a couple.
+	=> END
+	
+if (global.found_all_princess_letters == true) and (global.given_all_princess_letters == false):
+# if (global.found_all_princess_letters == true) and (global.found_all_princess_potions == false):
+	Princess: Wow, you did it!! Thanks so much.
+	Princess: Now, I think the next things I need are my POTIONS. 
+	Princess: They look the same as the one next to my worktable by the door, but some might have different colors.
+	Princess: So! Same deal as last time, when you find them all, come back to me.
+	set global.given_all_princess_letters = true
+	=> END
+	
+if (global.found_all_princess_letters == true) and (global.found_all_princess_potions == false):
+	Princess: Ah, I'm not sure you have all of them.
+	=> END
+
+if (global.found_all_princess_potions == true) and (global.given_all_princess_potions == false) # (global.found_all_princess_letters == true):
+	Princess: You actually got all of them! Nice job.
+	Princess: So, as you know, they moved a lot of my things. They also unfortunately broke some stuff too.
+	Princess: Do you see those blue SHARDS next to my sawtable? That used to be my favorite vase, but now its pieces are all over the place.
+	Princess: Do you mind looking for those as well?
+	set global.given_all_princess_potions = true
+	=> END
+	
+if (global.found_all_princess_shards == false) and (global.found_all_princess_potions == true):
+	Princess: Sorry, I think you're missing a couple pieces.
+	=> END
+
+if (global.found_all_princess_shards == true):
+	Princess: I can't believe you found them all! Thank you.
+	Princess: Well, that's it! Thank you for finding everything, it really saved me a lot of time.
+	Princess: I'll see you later!
+	set global.given_all_princess_shards = true
+	=> END
